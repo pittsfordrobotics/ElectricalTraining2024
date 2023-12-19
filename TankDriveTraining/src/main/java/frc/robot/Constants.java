@@ -17,17 +17,16 @@ import edu.wpi.first.math.util.Units;
  */
 public final class Constants {
   //From now on, uppercase for constants
-  //TODO: find actual CAN IDs
   public static final int CAN_LEFT_MOTOR_1 = 1;
   public static final int CAN_LEFT_MOTOR_2 = 2;
   public static final int CAN_RIGHT_MOTOR_1 = 3;
   public static final int CAN_RIGHT_MOTOR_2 = 4;
-  //TODO: Track width of the tank drive
-  public static final DifferentialDriveKinematics kinematics = new DifferentialDriveKinematics(Units.inchesToMeters(28));
-  //TODO: Max speeds of tank drive
-  public static final double MAX_LINEAR_SPEED_METER_PER_SECOND = 8;
-  public static final double MAX_ANGULAR_SPEED_RAD_PER_SECOND = 3;
-  public static final double MAX_WHEEL_SPEED_METER_PER_SECOND = 12;
+  //Track width of the tank drive
+  public static final DifferentialDriveKinematics kinematics = new DifferentialDriveKinematics(Units.inchesToMeters(22.9375));
+  //Max speeds of tank drive
+  public static final double MAX_LINEAR_SPEED_METER_PER_SECOND = 5;
+  public static final double MAX_ANGULAR_SPEED_RAD_PER_SECOND = 2;
+  public static final double MAX_WHEEL_SPEED_METER_PER_SECOND = 8;
   
   public static final double WHEEL_DIAMETER_METERS = Units.inchesToMeters(5);
   public static final double GEAR_RATIO = 1;

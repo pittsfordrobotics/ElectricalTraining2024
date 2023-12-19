@@ -32,6 +32,7 @@ public class Tank extends SubsystemBase {
   private SparkMaxPIDController rightPID;
   private RelativeEncoder leftEncoder;
   private RelativeEncoder rightEncoder;
+
   /** Creates a new Tank Drive with 4 motors and 6 wheels. */
   public Tank() {
     this.setDefaultCommand(new TankDriveXbox(this));
@@ -48,10 +49,12 @@ public class Tank extends SubsystemBase {
     leftMotor2.setIdleMode(IdleMode.kBrake);
     rightMotor1.setIdleMode(IdleMode.kBrake);
     rightMotor2.setIdleMode(IdleMode.kBrake);
+    //Right side's motors are facing opposite direction of left, so they must be inverted
+    rightMotor1.setInverted(true);
 
     //Each side of tank has 2 motors. One will follow the other.
-    leftMotor2.follow(leftMotor1, true);
-    rightMotor2.follow(rightMotor1, true);
+    leftMotor2.follow(leftMotor1);
+    rightMotor2.follow(rightMotor1);
 
     //Encoders and PID control
     leftEncoder = leftMotor1.getEncoder();
@@ -62,6 +65,7 @@ public class Tank extends SubsystemBase {
     rightPID = rightMotor1.getPIDController();
     leftPID.setFeedbackDevice(leftEncoder);
     rightPID.setFeedbackDevice(rightEncoder);
+    //Set PID constants
     leftPID.setP(Constants.TANK_P);
     leftPID.setI(Constants.TANK_I);
     leftPID.setD(Constants.TANK_D);
